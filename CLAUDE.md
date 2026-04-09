@@ -1,11 +1,15 @@
 # UNRAVEL — Claude Instructions
 
+
 ## What This Project Is
 A minimalist mobile puzzle game where players untangle yarn knots by tapping 
 crossing points. Built with React Native + Expo for iOS and Android.
 
 The core loop: tap a crossing → flip over/under → knot simplifies → 
 snap animation plays → stars awarded. Simple to learn, hard to master.
+
+## do
+Ask em question everytime you try to create something new or make changes to the files. Wait for my response and then only proceed. 
 
 ## Tech Stack (never substitute these without asking)
 - Framework: React Native + Expo SDK 52
