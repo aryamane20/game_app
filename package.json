@@ -1,0 +1,10 @@
+{
+  "name": "unravel-workspace",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit --build"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.2"
+  }
+}
