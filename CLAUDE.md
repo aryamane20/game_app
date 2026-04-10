@@ -1,86 +1,49 @@
-# UNRAVEL — Claude Instructions
 
+# 🧶 UNRAVEL — Full Single-Player Implementation Plan
 
-## What This Project Is
-A minimalist mobile puzzle game where players untangle yarn knots by tapping 
-crossing points. Built with React Native + Expo for iOS and Android.
+## Overview
+A knot-untangling puzzle game using knot theory (crossing-based mechanics). Local storage for progress. No payments. Three modes: Story, Zen, and placeholder for Daily Knot.
 
-The core loop: tap a crossing → flip over/under → knot simplifies → 
-snap animation plays → stars awarded. Simple to learn, hard to master.
+## 1. Core Game Engine
+- **Knot data model**: Represent knots as a graph of crossing points (position, over/under state, connected strands)
+- **Rendering**: SVG-based canvas drawing yarn strands as thick (12px), rounded paths in the specified color palette on warm off-white (#fafaf9) background
+- **Crossing interaction**: Tap/click a crossing to flip OVER ↔ UNDER. Yellow glow highlight on hover. Animate strand rearrangement in real-time
+- **Win detection**: When all crossings are resolved (zero crossings), trigger solve animation
+- **Move counter & timer**: Count moves and elapsed time per level
 
-## do
-Ask questions everytime you try to create something new or make changes to the files. Wait for my response and then only proceed. 
+## 2. Solve Animation (The Satisfaction Loop)
+- **SNAP** (0–300ms): Strands straighten, crossings collapse, subtle screen shake
+- **UNROLL** (300–900ms): Yarn slides smoothly off-screen left to right
+- **SCORE** (900ms+): Stars pop in one by one based on move efficiency (⭐⭐⭐ = optimal, ⭐⭐ = ≤2x, ⭐ = solved)
 
-## Tech Stack (never substitute these without asking)
-- Framework: React Native + Expo SDK 52
-- Language: TypeScript (strict mode always)
-- Canvas/Drawing: @shopify/react-native-skia (ALL knot rendering lives here)
-- Animations: react-native-reanimated 3 (ALL motion lives here)
-- Styling: NativeWind (Tailwind utility classes)
-- State: Zustand (gameStore + progressStore)
-- Navigation: Expo Router (file-based, lives in /app directory)
-- Storage: @react-native-async-storage/async-storage
-- Haptics: expo-haptics (fire on EVERY crossing tap and solve)
-- Audio: expo-av
-- Build: Expo EAS
+## 3. Level System
+- **20+ handcrafted levels** with progressive difficulty (1–2 crossings up to 10+ crossings, single then multi-color strands)
+- **Procedural generation** for Zen Mode (random valid knots of configurable complexity)
+- **Star ratings** stored per level (best score)
+- **Level select screen** showing stars earned, locked/unlocked state
 
-## Project Structure
+## 4. Game Modes
+- **Story Mode**: 20+ levels with gentle narrative framing (untangling memories). Sequential progression with level select
+- **Zen Mode**: Infinite procedurally generated knots, no timer, no stars — pure relaxation
+- **Daily Knot**: Placeholder UI (shows "Coming Soon") with share card mockup
 
-app/              → Expo Router screens (index, game/[id], result, daily, zen)
-components/       → UI components (never put game logic here)
-hooks/            → Custom hooks (useKnot, useGameLoop, useHaptics, useStreak)
-stores/           → Zustand stores only (gameStore, progressStore)
-data/levels/      → Knot level definitions (world1, world2, world3)
-utils/            → Pure functions (knotMath, bezierPath, shareImage)
-types/            → TypeScript types only (knot.ts)
-assets/           → Fonts, sounds, images
+## 5. UI & Navigation
+- **Home screen**: Game title, warm minimal design, mode selection buttons
+- **In-game HUD**: Move counter, timer (counting up), pause/menu button
+- **Level complete overlay**: Stars, move count, time, "Next Level" / "Retry" buttons
+- **Settings**: Sound toggle (visual only for now), reset progress
 
-## Core Game Types
-```typescript
-type Point = { x: number; y: number }
-type Crossing = { id: string; position: Point; strandOver: string; strandUnder: string; isResolved: boolean }
-type Strand = { id: string; color: string; controlPoints: Point[] }
-type Knot = { id: string; strands: Strand[]; crossings: Crossing[]; minimumMoves: number }
-type StarRating = 1 | 2 | 3
-```
+## 6. Visual Design
+- Nunito font, warm off-white background with subtle linen texture
+- Yarn colors: red (#ef4444), blue (#3b82f6), amber (#f59e0b), emerald (#10b981)
+- Dark warm brown text (#292524), gold stars (#fbbf24)
+- Smooth animations throughout using CSS/SVG transitions
 
-## Design System (never deviate from these)
-- Background: #FAFAF9 (warm off-white)
-- Primary: #EF4444 (red yarn)
-- Text primary: #1C1917
-- Text muted: #78716C
-- Crossing highlight: #FBBF24 (gold)
-- Font: Nunito (rounded, warm)
-- Border radius: rounded-2xl on all cards
-- Shadows: shadow-sm only — this is a minimal game
+## 7. Progress & Persistence
+- LocalStorage for: level completion, star ratings, best moves/times, streak counter, current level
+- Streak tracking (consecutive days played) shown on home screen
 
-## Critical Rules
-1. KnotCanvas.tsx uses ONLY Skia APIs — no React Native Views inside the canvas
-2. ALL animations use Reanimated — never CSS transitions or Animated API
-3. Haptics fire on every user interaction — non-negotiable for game feel
-4. Undo is always available — never disable it
-5. No loading spinners inside the game screen — preload everything
-6. Levels are immutable data — never mutate level objects, always create new state
-7. Every crossing tap target must be minimum 44pt (Apple HIG)
-8. TypeScript strict mode — no `any` types, ever
-
-## The Snap Animation (most important feature)
-When isSolved() returns true, this sequence MUST play in order:
-1. Crossings scale to 0 + fade (0-300ms)
-2. Strands straighten to horizontal lines (300-700ms)  
-3. Lines slide off screen right, staggered 60ms each (700-1200ms)
-4. onComplete() fires at 1200ms
-Never shortcut or simplify this animation. It is the core satisfaction mechanic.
-
-## What Makes This Game Addictive (keep in mind when building)
-- The snap animation is the dopamine hit — protect it
-- Haptic feedback makes taps feel physical
-- Undo removes frustration — players who aren't frustrated play longer
-- Stars on incomplete levels pull players back (Zeigarnik effect)
-- Daily Knot streak creates daily habit loop
-
-## When Adding a New Level
-See: .claude/commands/new-level.md
-
-## When Reviewing Animation Code  
-See: .claude/rules/animations.md
+## 8. Polish
+- Hover/touch states on all interactive elements
+- Responsive design for mobile and desktop
+- Tutorial overlay for first 2 levels showing which crossing to tap
