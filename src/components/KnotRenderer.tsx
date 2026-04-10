@@ -12,9 +12,8 @@ interface KnotRendererProps {
 }
 
 const NODE_RADIUS = 14;
-const EDGE_WIDTH = 10;
-const EDGE_SHADOW_WIDTH = 14;
 const CURVE_AMOUNT = 0.18;
+const BG_COLOR = '#fafaf9';
 
 // Spring physics for elastic wobble
 interface SpringState {
@@ -49,10 +48,6 @@ function getControlPoint(
   return { cx: mx + px * offset, cy: my + py * offset };
 }
 
-function buildCurvePath(from: KnotNode, to: KnotNode, ctrl: { cx: number; cy: number }): string {
-  return `M ${from.x} ${from.y} Q ${ctrl.cx} ${ctrl.cy} ${to.x} ${to.y}`;
-}
-
 const KnotRenderer: React.FC<KnotRendererProps> = ({
   nodes,
   edges,
@@ -61,7 +56,7 @@ const KnotRenderer: React.FC<KnotRendererProps> = ({
   solved,
   shaking,
 }) => {
-  const svgRef = useRef<SVGSVGElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [dragVelocity, setDragVelocity] = useState({ x: 0, y: 0 });
@@ -202,79 +197,90 @@ const KnotRenderer: React.FC<KnotRendererProps> = ({
     return controls;
   }, [baseControls, springOffsets, edges]);
 
-  // Crossing detection
-  const crossingEdgeIds = new Set<string>();
-  const intersectionPoints: { x: number; y: number; key: string }[] = [];
+  // Memoize crossing detection
+  const { crossingEdgeIds, intersectionPoints } = useMemo(() => {
+    const crossingEdgeIds = new Set<string>();
+    const intersectionPoints: { x: number; y: number; key: string }[] = [];
 
-  if (!solved) {
-    for (let i = 0; i < edges.length; i++) {
-      for (let j = i + 1; j < edges.length; j++) {
-        const e1 = edges[i], e2 = edges[j];
-        if (e1.from === e2.from || e1.from === e2.to || e1.to === e2.from || e1.to === e2.to) continue;
-        const n1 = nodeMap[e1.from], n2 = nodeMap[e1.to];
-        const n3 = nodeMap[e2.from], n4 = nodeMap[e2.to];
-        if (!n1 || !n2 || !n3 || !n4) continue;
-        if (segmentsIntersect(n1.x, n1.y, n2.x, n2.y, n3.x, n3.y, n4.x, n4.y)) {
-          crossingEdgeIds.add(e1.id);
-          crossingEdgeIds.add(e2.id);
-          const denom = (n1.x - n2.x) * (n3.y - n4.y) - (n1.y - n2.y) * (n3.x - n4.x);
-          if (Math.abs(denom) > 0.001) {
-            const t = ((n1.x - n3.x) * (n3.y - n4.y) - (n1.y - n3.y) * (n3.x - n4.x)) / denom;
-            intersectionPoints.push({
-              x: n1.x + t * (n2.x - n1.x),
-              y: n1.y + t * (n2.y - n1.y),
-              key: `${e1.id}-${e2.id}`,
-            });
+    if (!solved) {
+      for (let i = 0; i < edges.length; i++) {
+        for (let j = i + 1; j < edges.length; j++) {
+          const e1 = edges[i], e2 = edges[j];
+          if (e1.from === e2.from || e1.from === e2.to || e1.to === e2.from || e1.to === e2.to) continue;
+          const n1 = nodeMap[e1.from], n2 = nodeMap[e1.to];
+          const n3 = nodeMap[e2.from], n4 = nodeMap[e2.to];
+          if (!n1 || !n2 || !n3 || !n4) continue;
+          if (segmentsIntersect(n1.x, n1.y, n2.x, n2.y, n3.x, n3.y, n4.x, n4.y)) {
+            crossingEdgeIds.add(e1.id);
+            crossingEdgeIds.add(e2.id);
+            const denom = (n1.x - n2.x) * (n3.y - n4.y) - (n1.y - n2.y) * (n3.x - n4.x);
+            if (Math.abs(denom) > 0.001) {
+              const t = ((n1.x - n3.x) * (n3.y - n4.y) - (n1.y - n3.y) * (n3.x - n4.x)) / denom;
+              intersectionPoints.push({
+                x: n1.x + t * (n2.x - n1.x),
+                y: n1.y + t * (n2.y - n1.y),
+                key: `${e1.id}-${e2.id}`,
+              });
+            }
           }
         }
       }
     }
-  }
 
-  const getSVGPoint = useCallback((clientX: number, clientY: number) => {
-    const svg = svgRef.current;
-    if (!svg) return { x: 0, y: 0 };
-    const pt = svg.createSVGPoint();
-    pt.x = clientX;
-    pt.y = clientY;
-    const ctm = svg.getScreenCTM();
-    if (!ctm) return { x: 0, y: 0 };
-    const svgPt = pt.matrixTransform(ctm.inverse());
-    return { x: svgPt.x, y: svgPt.y };
+    return { crossingEdgeIds, intersectionPoints };
+  }, [nodes, edges, solved]);
+
+  const getCanvasPoint = useCallback((clientX: number, clientY: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: (clientX - rect.left) * (400 / rect.width),
+      y: (clientY - rect.top) * (400 / rect.height),
+    };
   }, []);
 
-  const handlePointerDown = useCallback((e: React.PointerEvent, nodeId: string) => {
+  const handleCanvasPointerDown = useCallback((e: React.PointerEvent) => {
     if (solved) return;
     e.preventDefault();
     e.stopPropagation();
-    const svgPt = getSVGPoint(e.clientX, e.clientY);
-    const node = nodeMap[nodeId];
-    if (!node) return;
-    setDraggingId(nodeId);
-    setDragOffset({ x: svgPt.x - node.x, y: svgPt.y - node.y });
-    lastDragPos.current = { x: svgPt.x, y: svgPt.y };
+
+    const pt = getCanvasPoint(e.clientX, e.clientY);
+
+    // Hit-test to find clicked node
+    const clicked = nodes.find(n => {
+      const dx = pt.x - n.x;
+      const dy = pt.y - n.y;
+      return Math.sqrt(dx * dx + dy * dy) <= NODE_RADIUS + 6;
+    });
+
+    if (!clicked) return;
+
+    setDraggingId(clicked.id);
+    setDragOffset({ x: pt.x - clicked.x, y: pt.y - clicked.y });
+    lastDragPos.current = { x: pt.x, y: pt.y };
     setDragVelocity({ x: 0, y: 0 });
     (e.target as Element).setPointerCapture?.(e.pointerId);
-  }, [solved, getSVGPoint, nodeMap]);
+  }, [solved, getCanvasPoint, nodes]);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (!draggingId) return;
     e.preventDefault();
-    const svgPt = getSVGPoint(e.clientX, e.clientY);
-    const newX = Math.max(10, Math.min(390, svgPt.x - dragOffset.x));
-    const newY = Math.max(10, Math.min(390, svgPt.y - dragOffset.y));
+    const pt = getCanvasPoint(e.clientX, e.clientY);
+    const newX = Math.max(10, Math.min(390, pt.x - dragOffset.x));
+    const newY = Math.max(10, Math.min(390, pt.y - dragOffset.y));
 
     // Compute drag velocity for spring wobble
-    const vx = svgPt.x - lastDragPos.current.x;
-    const vy = svgPt.y - lastDragPos.current.y;
-    lastDragPos.current = { x: svgPt.x, y: svgPt.y };
+    const vx = pt.x - lastDragPos.current.x;
+    const vy = pt.y - lastDragPos.current.y;
+    lastDragPos.current = { x: pt.x, y: pt.y };
     setDragVelocity({ x: vx, y: vy });
 
     const newNodes = nodes.map(n =>
       n.id === draggingId ? { ...n, x: newX, y: newY } : n
     );
     onNodesChange(newNodes);
-  }, [draggingId, getSVGPoint, dragOffset, nodes, onNodesChange]);
+  }, [draggingId, getCanvasPoint, dragOffset, nodes, onNodesChange]);
 
   const handlePointerUp = useCallback(() => {
     if (!draggingId) return;
@@ -296,126 +302,191 @@ const KnotRenderer: React.FC<KnotRendererProps> = ({
     onDragEnd();
   }, [draggingId, dragVelocity, edges, onDragEnd]);
 
+  // Draw function for canvas rendering
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Setup for DPR-aware rendering
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = canvas.clientWidth * dpr;
+    canvas.height = canvas.clientHeight * dpr;
+
+    ctx.save();
+    ctx.scale(dpr * canvas.clientWidth / 400, dpr * canvas.clientHeight / 400);
+
+    // Clear background
+    ctx.fillStyle = BG_COLOR;
+    ctx.fillRect(0, 0, 400, 400);
+
+    // Draw edge shadows
+    edges.forEach(edge => {
+      const from = nodeMap[edge.from];
+      const to = nodeMap[edge.to];
+      if (!from || !to) return;
+      const ctrl = edgeControls[edge.id];
+      if (!ctrl) return;
+
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.lineWidth = 13;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
+      ctx.shadowOffsetX = 2;
+      ctx.shadowOffsetY = 2;
+
+      ctx.beginPath();
+      ctx.moveTo(from.x + 2, from.y + 2);
+      ctx.quadraticCurveTo(ctrl.cx + 2, ctrl.cy + 2, to.x + 2, to.y + 2);
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+    });
+
+    // Draw yarn strands (4-layer rendering)
+    edges.forEach(edge => {
+      const from = nodeMap[edge.from];
+      const to = nodeMap[edge.to];
+      if (!from || !to) return;
+      const ctrl = edgeControls[edge.id];
+      if (!ctrl) return;
+
+      const isCrossing = crossingEdgeIds.has(edge.id);
+
+      // Layer 1: Drop shadow
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.lineWidth = 13;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.globalAlpha = 0.4;
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.quadraticCurveTo(ctrl.cx, ctrl.cy, to.x, to.y);
+      ctx.stroke();
+
+      // Layer 2: Outer glow
+      ctx.strokeStyle = edge.color;
+      ctx.lineWidth = 18;
+      ctx.globalAlpha = isCrossing ? 0.12 : 0.2;
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.quadraticCurveTo(ctrl.cx, ctrl.cy, to.x, to.y);
+      ctx.stroke();
+
+      // Layer 3: Main yarn core
+      ctx.strokeStyle = edge.color;
+      ctx.lineWidth = 11;
+      ctx.globalAlpha = isCrossing ? 0.6 : 1.0;
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.quadraticCurveTo(ctrl.cx, ctrl.cy, to.x, to.y);
+      ctx.stroke();
+
+      // Layer 4: Specular highlight (top edge)
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+      ctx.lineWidth = 3;
+      ctx.globalAlpha = isCrossing ? 0.4 : 0.7;
+      ctx.beginPath();
+      ctx.moveTo(from.x - 1, from.y - 1);
+      ctx.quadraticCurveTo(ctrl.cx - 1, ctrl.cy - 1, to.x - 1, to.y - 1);
+      ctx.stroke();
+
+      ctx.globalAlpha = 1.0;
+    });
+
+    // Draw crossing markers
+    intersectionPoints.forEach(pt => {
+      ctx.fillStyle = 'rgba(239, 68, 68, 0.2)';
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(239, 68, 68, 0.8)';
+      ctx.font = 'bold 10px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('✕', pt.x, pt.y);
+    });
+
+    // Draw nodes
+    nodes.forEach(node => {
+      const isDragging = draggingId === node.id;
+
+      // Layer 1: Shadow
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.18)';
+      ctx.shadowBlur = 6;
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+      ctx.beginPath();
+      ctx.arc(node.x + 2, node.y + 2, NODE_RADIUS, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+
+      // Layer 2: Body with radial gradient
+      const grad = ctx.createRadialGradient(node.x - 4, node.y - 4, 2, node.x, node.y, NODE_RADIUS);
+      grad.addColorStop(0, '#ffffff');
+      grad.addColorStop(0.5, '#fafaf9');
+      grad.addColorStop(1, '#e8e0d8');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, NODE_RADIUS, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Node border
+      ctx.strokeStyle = isDragging ? '#fbbf24' : '#44403c';
+      ctx.lineWidth = isDragging ? 3 : 2.5;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, NODE_RADIUS, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Layer 3: Center pip with gradient
+      const pipGrad = ctx.createRadialGradient(node.x - 1, node.y - 1, 0, node.x, node.y, 4);
+      pipGrad.addColorStop(0, isDragging ? '#f59e0b' : '#a8a29e');
+      pipGrad.addColorStop(1, isDragging ? '#78716c' : '#57534e');
+      ctx.fillStyle = pipGrad;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Dragging glow ring
+      if (isDragging) {
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 2.5;
+        ctx.globalAlpha = 0.6;
+        ctx.shadowColor = '#fbbf24';
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, NODE_RADIUS + 7, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 0;
+      }
+    });
+
+    ctx.restore();
+  }, [nodes, edges, edgeControls, crossingEdgeIds, intersectionPoints, draggingId]);
+
+  // Trigger redraw on visual state changes
+  useEffect(() => {
+    draw();
+  }, [draw]);
+
   return (
-    <svg
-      ref={svgRef}
-      viewBox="0 0 400 400"
+    <canvas
+      ref={canvasRef}
       className={`w-full h-full select-none ${shaking ? 'shake' : ''}`}
-      style={{ touchAction: 'none' }}
+      style={{ touchAction: 'none', cursor: draggingId ? 'grabbing' : solved ? 'default' : 'grab' }}
+      onPointerDown={handleCanvasPointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
-    >
-      <defs>
-        <filter id="yarn-texture" x="-5%" y="-5%" width="110%" height="110%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
-        </filter>
-      </defs>
-
-      {/* Edge shadows */}
-      {edges.map(edge => {
-        const from = nodeMap[edge.from];
-        const to = nodeMap[edge.to];
-        if (!from || !to) return null;
-        const ctrl = edgeControls[edge.id];
-        if (!ctrl) return null;
-        return (
-          <path
-            key={`shadow-${edge.id}`}
-            d={buildCurvePath(
-              { ...from, x: from.x + 1.5, y: from.y + 1.5 },
-              { ...to, x: to.x + 1.5, y: to.y + 1.5 },
-              { cx: ctrl.cx + 1.5, cy: ctrl.cy + 1.5 }
-            )}
-            fill="none"
-            stroke="rgba(0,0,0,0.08)"
-            strokeWidth={EDGE_SHADOW_WIDTH}
-            strokeLinecap="round"
-          />
-        );
-      })}
-
-      {/* Curved yarn strands */}
-      {edges.map(edge => {
-        const from = nodeMap[edge.from];
-        const to = nodeMap[edge.to];
-        if (!from || !to) return null;
-        const ctrl = edgeControls[edge.id];
-        if (!ctrl) return null;
-        const isCrossing = crossingEdgeIds.has(edge.id);
-        const path = buildCurvePath(from, to, ctrl);
-        return (
-          <g key={`edge-${edge.id}`}>
-            <path
-              d={path} fill="none" stroke={edge.color}
-              strokeWidth={EDGE_WIDTH + 2} strokeLinecap="round"
-              opacity={(isCrossing ? 0.55 : 0.9) * 0.3}
-            />
-            <path
-              d={path} fill="none" stroke={edge.color}
-              strokeWidth={EDGE_WIDTH} strokeLinecap="round"
-              opacity={isCrossing ? 0.6 : 1}
-              filter="url(#yarn-texture)"
-              style={{ transition: 'opacity 0.2s' }}
-            />
-            <path
-              d={path} fill="none" stroke="rgba(255,255,255,0.25)"
-              strokeWidth={3} strokeLinecap="round"
-              opacity={isCrossing ? 0.3 : 0.6}
-            />
-          </g>
-        );
-      })}
-
-      {/* Crossing indicators */}
-      {intersectionPoints.map(pt => (
-        <g key={pt.key}>
-          <circle cx={pt.x} cy={pt.y} r={8} fill="rgba(239,68,68,0.15)" />
-          <text
-            x={pt.x} y={pt.y + 1}
-            textAnchor="middle" dominantBaseline="central"
-            fontSize={10} fontWeight={800} fill="#ef4444" opacity={0.5}
-            style={{ pointerEvents: 'none', fontFamily: 'Nunito, sans-serif' }}
-          >✕</text>
-        </g>
-      ))}
-
-      {/* Nodes */}
-      {nodes.map(node => {
-        const isDragging = draggingId === node.id;
-        return (
-          <g
-            key={node.id}
-            className={`${solved ? '' : 'cursor-grab'} ${isDragging ? 'cursor-grabbing' : ''}`}
-            onPointerDown={(e) => handlePointerDown(e, node.id)}
-          >
-            {isDragging && (
-              <circle
-                cx={node.x} cy={node.y} r={NODE_RADIUS + 6}
-                fill="none" stroke="#fbbf24" strokeWidth={3} opacity={0.6}
-              />
-            )}
-            <circle
-              cx={node.x + 1} cy={node.y + 1} r={NODE_RADIUS}
-              fill="rgba(0,0,0,0.12)"
-            />
-            <circle
-              cx={node.x} cy={node.y} r={isDragging ? NODE_RADIUS + 2 : NODE_RADIUS}
-              fill="#fafaf9"
-              stroke={isDragging ? '#fbbf24' : '#44403c'}
-              strokeWidth={isDragging ? 3 : 2.5}
-              style={{ transition: isDragging ? 'none' : 'r 0.2s, stroke 0.2s, stroke-width 0.2s' }}
-            />
-            <circle
-              cx={node.x} cy={node.y} r={4}
-              fill={isDragging ? '#f59e0b' : '#78716c'}
-              style={{ transition: 'fill 0.2s' }}
-            />
-          </g>
-        );
-      })}
-    </svg>
+    />
   );
 };
 
