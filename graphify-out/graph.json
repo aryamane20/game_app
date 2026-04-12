@@ -1,0 +1,1586 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L1",
+      "id": "src_app_tsx",
+      "community": 3
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L11",
+      "id": "app_app",
+      "community": 3
+    },
+    {
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "src/main.tsx",
+      "source_location": "L1",
+      "id": "src_main_tsx",
+      "community": 3
+    },
+    {
+      "label": "vite-env.d.ts",
+      "file_type": "code",
+      "source_file": "src/vite-env.d.ts",
+      "source_location": "L1",
+      "id": "src_vite_env_d_ts",
+      "community": 21
+    },
+    {
+      "label": "example.test.ts",
+      "file_type": "code",
+      "source_file": "src/test/example.test.ts",
+      "source_location": "L1",
+      "id": "src_test_example_test_ts",
+      "community": 22
+    },
+    {
+      "label": "setup.ts",
+      "file_type": "code",
+      "source_file": "src/test/setup.ts",
+      "source_location": "L1",
+      "id": "src_test_setup_ts",
+      "community": 23
+    },
+    {
+      "label": "levels.ts",
+      "file_type": "code",
+      "source_file": "src/game/levels.ts",
+      "source_location": "L1",
+      "id": "src_game_levels_ts",
+      "community": 9
+    },
+    {
+      "label": "generateZenKnot()",
+      "file_type": "code",
+      "source_file": "src/game/levels.ts",
+      "source_location": "L545",
+      "id": "levels_generatezenknot",
+      "community": 9
+    },
+    {
+      "label": "storage.ts",
+      "file_type": "code",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L1",
+      "id": "src_game_storage_ts",
+      "community": 4
+    },
+    {
+      "label": "loadProgress()",
+      "file_type": "code",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L21",
+      "id": "storage_loadprogress",
+      "community": 4
+    },
+    {
+      "label": "calculateStars()",
+      "file_type": "code",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L31",
+      "id": "storage_calculatestars",
+      "community": 4
+    },
+    {
+      "label": "saveLevelResult()",
+      "file_type": "code",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L37",
+      "id": "storage_savelevelresult",
+      "community": 4
+    },
+    {
+      "label": "resetProgress()",
+      "file_type": "code",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L82",
+      "id": "storage_resetprogress",
+      "community": 4
+    },
+    {
+      "label": "engine.ts",
+      "file_type": "code",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L1",
+      "id": "src_game_engine_ts",
+      "community": 1
+    },
+    {
+      "label": "ccw()",
+      "file_type": "code",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L7",
+      "id": "engine_ccw",
+      "community": 1
+    },
+    {
+      "label": "segmentsIntersect()",
+      "file_type": "code",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L11",
+      "id": "engine_segmentsintersect",
+      "community": 1
+    },
+    {
+      "label": "countCrossings()",
+      "file_type": "code",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L31",
+      "id": "engine_countcrossings",
+      "community": 1
+    },
+    {
+      "label": "isKnotSolved()",
+      "file_type": "code",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L64",
+      "id": "engine_isknotsolved",
+      "community": 1
+    },
+    {
+      "label": "cloneNodes()",
+      "file_type": "code",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L71",
+      "id": "engine_clonenodes",
+      "community": 1
+    },
+    {
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "src/game/types.ts",
+      "source_location": "L1",
+      "id": "src_game_types_ts",
+      "community": 24
+    },
+    {
+      "label": "LevelSelect.tsx",
+      "file_type": "code",
+      "source_file": "src/components/LevelSelect.tsx",
+      "source_location": "L1",
+      "id": "src_components_levelselect_tsx",
+      "community": 25
+    },
+    {
+      "label": "NavLink.tsx",
+      "file_type": "code",
+      "source_file": "src/components/NavLink.tsx",
+      "source_location": "L1",
+      "id": "src_components_navlink_tsx",
+      "community": 26
+    },
+    {
+      "label": "KnotRenderer.tsx",
+      "file_type": "code",
+      "source_file": "src/components/KnotRenderer.tsx",
+      "source_location": "L1",
+      "id": "src_components_knotrenderer_tsx",
+      "community": 7
+    },
+    {
+      "label": "getControlPoint()",
+      "file_type": "code",
+      "source_file": "src/components/KnotRenderer.tsx",
+      "source_location": "L31",
+      "id": "knotrenderer_getcontrolpoint",
+      "community": 7
+    },
+    {
+      "label": "KnotRenderer()",
+      "file_type": "code",
+      "source_file": "src/components/KnotRenderer.tsx",
+      "source_location": "L51",
+      "id": "knotrenderer_knotrenderer",
+      "community": 7
+    },
+    {
+      "label": "GameScreen.tsx",
+      "file_type": "code",
+      "source_file": "src/components/GameScreen.tsx",
+      "source_location": "L1",
+      "id": "src_components_gamescreen_tsx",
+      "community": 10
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "src/components/GameScreen.tsx",
+      "source_location": "L54",
+      "id": "gamescreen_formattime",
+      "community": 10
+    },
+    {
+      "label": "SettingsScreen.tsx",
+      "file_type": "code",
+      "source_file": "src/components/SettingsScreen.tsx",
+      "source_location": "L1",
+      "id": "src_components_settingsscreen_tsx",
+      "community": 11
+    },
+    {
+      "label": "handleReset()",
+      "file_type": "code",
+      "source_file": "src/components/SettingsScreen.tsx",
+      "source_location": "L11",
+      "id": "settingsscreen_handlereset",
+      "community": 11
+    },
+    {
+      "label": "StarRating.tsx",
+      "file_type": "code",
+      "source_file": "src/components/StarRating.tsx",
+      "source_location": "L1",
+      "id": "src_components_starrating_tsx",
+      "community": 12
+    },
+    {
+      "label": "StarRating()",
+      "file_type": "code",
+      "source_file": "src/components/StarRating.tsx",
+      "source_location": "L10",
+      "id": "starrating_starrating",
+      "community": 12
+    },
+    {
+      "label": "HomeScreen.tsx",
+      "file_type": "code",
+      "source_file": "src/components/HomeScreen.tsx",
+      "source_location": "L1",
+      "id": "src_components_homescreen_tsx",
+      "community": 27
+    },
+    {
+      "label": "aspect-ratio.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/aspect-ratio.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_aspect_ratio_tsx",
+      "community": 28
+    },
+    {
+      "label": "alert-dialog.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/alert-dialog.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_alert_dialog_tsx",
+      "community": 29
+    },
+    {
+      "label": "pagination.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_pagination_tsx",
+      "community": 2
+    },
+    {
+      "label": "Pagination()",
+      "file_type": "code",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L7",
+      "id": "pagination_pagination",
+      "community": 2
+    },
+    {
+      "label": "PaginationLink()",
+      "file_type": "code",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L34",
+      "id": "pagination_paginationlink",
+      "community": 2
+    },
+    {
+      "label": "PaginationPrevious()",
+      "file_type": "code",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L49",
+      "id": "pagination_paginationprevious",
+      "community": 2
+    },
+    {
+      "label": "PaginationNext()",
+      "file_type": "code",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L57",
+      "id": "pagination_paginationnext",
+      "community": 2
+    },
+    {
+      "label": "PaginationEllipsis()",
+      "file_type": "code",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L65",
+      "id": "pagination_paginationellipsis",
+      "community": 2
+    },
+    {
+      "label": "tabs.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/tabs.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_tabs_tsx",
+      "community": 30
+    },
+    {
+      "label": "card.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/card.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_card_tsx",
+      "community": 31
+    },
+    {
+      "label": "slider.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/slider.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_slider_tsx",
+      "community": 32
+    },
+    {
+      "label": "popover.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/popover.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_popover_tsx",
+      "community": 33
+    },
+    {
+      "label": "progress.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/progress.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_progress_tsx",
+      "community": 34
+    },
+    {
+      "label": "toaster.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/toaster.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_toaster_tsx",
+      "community": 13
+    },
+    {
+      "label": "Toaster()",
+      "file_type": "code",
+      "source_file": "src/components/ui/toaster.tsx",
+      "source_location": "L4",
+      "id": "toaster_toaster",
+      "community": 13
+    },
+    {
+      "label": "input-otp.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-otp.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_input_otp_tsx",
+      "community": 35
+    },
+    {
+      "label": "hover-card.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/hover-card.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_hover_card_tsx",
+      "community": 36
+    },
+    {
+      "label": "sheet.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/sheet.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_sheet_tsx",
+      "community": 37
+    },
+    {
+      "label": "scroll-area.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/scroll-area.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_scroll_area_tsx",
+      "community": 38
+    },
+    {
+      "label": "resizable.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/resizable.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_resizable_tsx",
+      "community": 14
+    },
+    {
+      "label": "ResizablePanelGroup()",
+      "file_type": "code",
+      "source_file": "src/components/ui/resizable.tsx",
+      "source_location": "L6",
+      "id": "resizable_resizablepanelgroup",
+      "community": 14
+    },
+    {
+      "label": "label.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/label.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_label_tsx",
+      "community": 39
+    },
+    {
+      "label": "sonner.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/sonner.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_sonner_tsx",
+      "community": 15
+    },
+    {
+      "label": "Toaster()",
+      "file_type": "code",
+      "source_file": "src/components/ui/sonner.tsx",
+      "source_location": "L6",
+      "id": "sonner_toaster",
+      "community": 15
+    },
+    {
+      "label": "navigation-menu.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/navigation-menu.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_navigation_menu_tsx",
+      "community": 40
+    },
+    {
+      "label": "accordion.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/accordion.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_accordion_tsx",
+      "community": 41
+    },
+    {
+      "label": "drawer.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_drawer_tsx",
+      "community": 5
+    },
+    {
+      "label": "Drawer()",
+      "file_type": "code",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L6",
+      "id": "drawer_drawer",
+      "community": 5
+    },
+    {
+      "label": "DrawerHeader()",
+      "file_type": "code",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L46",
+      "id": "drawer_drawerheader",
+      "community": 5
+    },
+    {
+      "label": "DrawerFooter()",
+      "file_type": "code",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L51",
+      "id": "drawer_drawerfooter",
+      "community": 5
+    },
+    {
+      "label": "tooltip.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/tooltip.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_tooltip_tsx",
+      "community": 42
+    },
+    {
+      "label": "alert.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/alert.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_alert_tsx",
+      "community": 43
+    },
+    {
+      "label": "use-toast.ts",
+      "file_type": "code",
+      "source_file": "src/components/ui/use-toast.ts",
+      "source_location": "L1",
+      "id": "src_components_ui_use_toast_ts",
+      "community": 44
+    },
+    {
+      "label": "switch.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/switch.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_switch_tsx",
+      "community": 45
+    },
+    {
+      "label": "calendar.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/calendar.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_calendar_tsx",
+      "community": 16
+    },
+    {
+      "label": "Calendar()",
+      "file_type": "code",
+      "source_file": "src/components/ui/calendar.tsx",
+      "source_location": "L10",
+      "id": "calendar_calendar",
+      "community": 16
+    },
+    {
+      "label": "breadcrumb.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/breadcrumb.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_breadcrumb_tsx",
+      "community": 8
+    },
+    {
+      "label": "BreadcrumbSeparator()",
+      "file_type": "code",
+      "source_file": "src/components/ui/breadcrumb.tsx",
+      "source_location": "L62",
+      "id": "breadcrumb_breadcrumbseparator",
+      "community": 8
+    },
+    {
+      "label": "BreadcrumbEllipsis()",
+      "file_type": "code",
+      "source_file": "src/components/ui/breadcrumb.tsx",
+      "source_location": "L69",
+      "id": "breadcrumb_breadcrumbellipsis",
+      "community": 8
+    },
+    {
+      "label": "radio-group.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/radio-group.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_radio_group_tsx",
+      "community": 46
+    },
+    {
+      "label": "command.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/command.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_command_tsx",
+      "community": 47
+    },
+    {
+      "label": "toggle-group.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/toggle-group.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_toggle_group_tsx",
+      "community": 48
+    },
+    {
+      "label": "avatar.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/avatar.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_avatar_tsx",
+      "community": 49
+    },
+    {
+      "label": "menubar.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/menubar.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_menubar_tsx",
+      "community": 50
+    },
+    {
+      "label": "dialog.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/dialog.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_dialog_tsx",
+      "community": 51
+    },
+    {
+      "label": "badge.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/badge.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_badge_tsx",
+      "community": 52
+    },
+    {
+      "label": "sidebar.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_sidebar_tsx",
+      "community": 6
+    },
+    {
+      "label": "useSidebar()",
+      "file_type": "code",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L34",
+      "id": "sidebar_usesidebar",
+      "community": 6
+    },
+    {
+      "label": "handleKeyDown()",
+      "file_type": "code",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L80",
+      "id": "sidebar_handlekeydown",
+      "community": 6
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L119",
+      "id": "sidebar_cn",
+      "community": 6
+    },
+    {
+      "label": "table.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/table.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_table_tsx",
+      "community": 53
+    },
+    {
+      "label": "separator.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/separator.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_separator_tsx",
+      "community": 54
+    },
+    {
+      "label": "button.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/button.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_button_tsx",
+      "community": 55
+    },
+    {
+      "label": "toggle.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/toggle.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_toggle_tsx",
+      "community": 56
+    },
+    {
+      "label": "toast.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/toast.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_toast_tsx",
+      "community": 57
+    },
+    {
+      "label": "checkbox.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/checkbox.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_checkbox_tsx",
+      "community": 58
+    },
+    {
+      "label": "collapsible.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/collapsible.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_collapsible_tsx",
+      "community": 59
+    },
+    {
+      "label": "dropdown-menu.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/dropdown-menu.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_dropdown_menu_tsx",
+      "community": 60
+    },
+    {
+      "label": "select.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_select_tsx",
+      "community": 61
+    },
+    {
+      "label": "textarea.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/textarea.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_textarea_tsx",
+      "community": 62
+    },
+    {
+      "label": "input.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/input.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_input_tsx",
+      "community": 63
+    },
+    {
+      "label": "skeleton.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/skeleton.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_skeleton_tsx",
+      "community": 64
+    },
+    {
+      "label": "context-menu.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/context-menu.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_context_menu_tsx",
+      "community": 65
+    },
+    {
+      "label": "form.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/form.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_form_tsx",
+      "community": 17
+    },
+    {
+      "label": "useFormField()",
+      "file_type": "code",
+      "source_file": "src/components/ui/form.tsx",
+      "source_location": "L33",
+      "id": "form_useformfield",
+      "community": 17
+    },
+    {
+      "label": "carousel.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/carousel.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_carousel_tsx",
+      "community": 18
+    },
+    {
+      "label": "useCarousel()",
+      "file_type": "code",
+      "source_file": "src/components/ui/carousel.tsx",
+      "source_location": "L31",
+      "id": "carousel_usecarousel",
+      "community": 18
+    },
+    {
+      "label": "use-mobile.tsx",
+      "file_type": "code",
+      "source_file": "src/hooks/use-mobile.tsx",
+      "source_location": "L1",
+      "id": "src_hooks_use_mobile_tsx",
+      "community": 19
+    },
+    {
+      "label": "useIsMobile()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-mobile.tsx",
+      "source_location": "L5",
+      "id": "use_mobile_useismobile",
+      "community": 19
+    },
+    {
+      "label": "use-toast.ts",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L1",
+      "id": "src_hooks_use_toast_ts",
+      "community": 0
+    },
+    {
+      "label": "genId()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L24",
+      "id": "use_toast_genid",
+      "community": 0
+    },
+    {
+      "label": "addToRemoveQueue()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L55",
+      "id": "use_toast_addtoremovequeue",
+      "community": 0
+    },
+    {
+      "label": "reducer()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L71",
+      "id": "use_toast_reducer",
+      "community": 0
+    },
+    {
+      "label": "dispatch()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L128",
+      "id": "use_toast_dispatch",
+      "community": 0
+    },
+    {
+      "label": "toast()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L137",
+      "id": "use_toast_toast",
+      "community": 0
+    },
+    {
+      "label": "useToast()",
+      "file_type": "code",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L166",
+      "id": "use_toast_usetoast",
+      "community": 0
+    },
+    {
+      "label": "utils.ts",
+      "file_type": "code",
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L1",
+      "id": "src_lib_utils_ts",
+      "community": 20
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L4",
+      "id": "utils_cn",
+      "community": 20
+    },
+    {
+      "label": "Index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Index.tsx",
+      "source_location": "L1",
+      "id": "src_pages_index_tsx",
+      "community": 3
+    },
+    {
+      "label": "NotFound.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/NotFound.tsx",
+      "source_location": "L1",
+      "id": "src_pages_notfound_tsx",
+      "community": 3
+    },
+    {
+      "label": "NotFound()",
+      "file_type": "code",
+      "source_file": "src/pages/NotFound.tsx",
+      "source_location": "L4",
+      "id": "notfound_notfound",
+      "community": 3
+    }
+  ],
+  "links": [
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_app_tsx",
+      "_tgt": "src_pages_index_tsx",
+      "source": "src_app_tsx",
+      "target": "src_pages_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "src_app_tsx",
+      "_tgt": "src_pages_notfound_tsx",
+      "source": "src_app_tsx",
+      "target": "src_pages_notfound_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_app_tsx",
+      "_tgt": "app_app",
+      "source": "src_app_tsx",
+      "target": "app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "src_main_tsx",
+      "_tgt": "src_app_tsx",
+      "source": "src_app_tsx",
+      "target": "src_main_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/levels.ts",
+      "source_location": "L545",
+      "weight": 1.0,
+      "_src": "src_game_levels_ts",
+      "_tgt": "levels_generatezenknot",
+      "source": "src_game_levels_ts",
+      "target": "levels_generatezenknot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_game_storage_ts",
+      "_tgt": "storage_loadprogress",
+      "source": "src_game_storage_ts",
+      "target": "storage_loadprogress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "src_game_storage_ts",
+      "_tgt": "storage_calculatestars",
+      "source": "src_game_storage_ts",
+      "target": "storage_calculatestars",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "src_game_storage_ts",
+      "_tgt": "storage_savelevelresult",
+      "source": "src_game_storage_ts",
+      "target": "storage_savelevelresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "src_game_storage_ts",
+      "_tgt": "storage_resetprogress",
+      "source": "src_game_storage_ts",
+      "target": "storage_resetprogress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "storage_savelevelresult",
+      "_tgt": "storage_loadprogress",
+      "source": "storage_loadprogress",
+      "target": "storage_savelevelresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/storage.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "storage_savelevelresult",
+      "_tgt": "storage_calculatestars",
+      "source": "storage_calculatestars",
+      "target": "storage_savelevelresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "src_game_engine_ts",
+      "_tgt": "engine_ccw",
+      "source": "src_game_engine_ts",
+      "target": "engine_ccw",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_game_engine_ts",
+      "_tgt": "engine_segmentsintersect",
+      "source": "src_game_engine_ts",
+      "target": "engine_segmentsintersect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "src_game_engine_ts",
+      "_tgt": "engine_countcrossings",
+      "source": "src_game_engine_ts",
+      "target": "engine_countcrossings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "src_game_engine_ts",
+      "_tgt": "engine_isknotsolved",
+      "source": "src_game_engine_ts",
+      "target": "engine_isknotsolved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "src_game_engine_ts",
+      "_tgt": "engine_clonenodes",
+      "source": "src_game_engine_ts",
+      "target": "engine_clonenodes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "engine_segmentsintersect",
+      "_tgt": "engine_ccw",
+      "source": "engine_ccw",
+      "target": "engine_segmentsintersect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_src": "engine_countcrossings",
+      "_tgt": "engine_segmentsintersect",
+      "source": "engine_segmentsintersect",
+      "target": "engine_countcrossings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/game/engine.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "engine_isknotsolved",
+      "_tgt": "engine_countcrossings",
+      "source": "engine_countcrossings",
+      "target": "engine_isknotsolved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/KnotRenderer.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "src_components_knotrenderer_tsx",
+      "_tgt": "knotrenderer_getcontrolpoint",
+      "source": "src_components_knotrenderer_tsx",
+      "target": "knotrenderer_getcontrolpoint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/KnotRenderer.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "src_components_knotrenderer_tsx",
+      "_tgt": "knotrenderer_knotrenderer",
+      "source": "src_components_knotrenderer_tsx",
+      "target": "knotrenderer_knotrenderer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/GameScreen.tsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "src_components_gamescreen_tsx",
+      "_tgt": "gamescreen_formattime",
+      "source": "src_components_gamescreen_tsx",
+      "target": "gamescreen_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/SettingsScreen.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_components_settingsscreen_tsx",
+      "_tgt": "settingsscreen_handlereset",
+      "source": "src_components_settingsscreen_tsx",
+      "target": "settingsscreen_handlereset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/StarRating.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "src_components_starrating_tsx",
+      "_tgt": "starrating_starrating",
+      "source": "src_components_starrating_tsx",
+      "target": "starrating_starrating",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "src_components_ui_pagination_tsx",
+      "_tgt": "pagination_pagination",
+      "source": "src_components_ui_pagination_tsx",
+      "target": "pagination_pagination",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "src_components_ui_pagination_tsx",
+      "_tgt": "pagination_paginationlink",
+      "source": "src_components_ui_pagination_tsx",
+      "target": "pagination_paginationlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "src_components_ui_pagination_tsx",
+      "_tgt": "pagination_paginationprevious",
+      "source": "src_components_ui_pagination_tsx",
+      "target": "pagination_paginationprevious",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "src_components_ui_pagination_tsx",
+      "_tgt": "pagination_paginationnext",
+      "source": "src_components_ui_pagination_tsx",
+      "target": "pagination_paginationnext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/pagination.tsx",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "src_components_ui_pagination_tsx",
+      "_tgt": "pagination_paginationellipsis",
+      "source": "src_components_ui_pagination_tsx",
+      "target": "pagination_paginationellipsis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/toaster.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_components_ui_toaster_tsx",
+      "_tgt": "toaster_toaster",
+      "source": "src_components_ui_toaster_tsx",
+      "target": "toaster_toaster",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/resizable.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_components_ui_resizable_tsx",
+      "_tgt": "resizable_resizablepanelgroup",
+      "source": "src_components_ui_resizable_tsx",
+      "target": "resizable_resizablepanelgroup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/sonner.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_components_ui_sonner_tsx",
+      "_tgt": "sonner_toaster",
+      "source": "src_components_ui_sonner_tsx",
+      "target": "sonner_toaster",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_components_ui_drawer_tsx",
+      "_tgt": "drawer_drawer",
+      "source": "src_components_ui_drawer_tsx",
+      "target": "drawer_drawer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "src_components_ui_drawer_tsx",
+      "_tgt": "drawer_drawerheader",
+      "source": "src_components_ui_drawer_tsx",
+      "target": "drawer_drawerheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/drawer.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "src_components_ui_drawer_tsx",
+      "_tgt": "drawer_drawerfooter",
+      "source": "src_components_ui_drawer_tsx",
+      "target": "drawer_drawerfooter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/calendar.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "src_components_ui_calendar_tsx",
+      "_tgt": "calendar_calendar",
+      "source": "src_components_ui_calendar_tsx",
+      "target": "calendar_calendar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/breadcrumb.tsx",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_src": "src_components_ui_breadcrumb_tsx",
+      "_tgt": "breadcrumb_breadcrumbseparator",
+      "source": "src_components_ui_breadcrumb_tsx",
+      "target": "breadcrumb_breadcrumbseparator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/breadcrumb.tsx",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "src_components_ui_breadcrumb_tsx",
+      "_tgt": "breadcrumb_breadcrumbellipsis",
+      "source": "src_components_ui_breadcrumb_tsx",
+      "target": "breadcrumb_breadcrumbellipsis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "src_components_ui_sidebar_tsx",
+      "_tgt": "sidebar_usesidebar",
+      "source": "src_components_ui_sidebar_tsx",
+      "target": "sidebar_usesidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "src_components_ui_sidebar_tsx",
+      "_tgt": "sidebar_handlekeydown",
+      "source": "src_components_ui_sidebar_tsx",
+      "target": "sidebar_handlekeydown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/sidebar.tsx",
+      "source_location": "L184",
+      "weight": 1.0,
+      "_src": "src_components_ui_sidebar_tsx",
+      "_tgt": "sidebar_cn",
+      "source": "src_components_ui_sidebar_tsx",
+      "target": "sidebar_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/form.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "src_components_ui_form_tsx",
+      "_tgt": "form_useformfield",
+      "source": "src_components_ui_form_tsx",
+      "target": "form_useformfield",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ui/carousel.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "src_components_ui_carousel_tsx",
+      "_tgt": "carousel_usecarousel",
+      "source": "src_components_ui_carousel_tsx",
+      "target": "carousel_usecarousel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-mobile.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "src_hooks_use_mobile_tsx",
+      "_tgt": "use_mobile_useismobile",
+      "source": "src_hooks_use_mobile_tsx",
+      "target": "use_mobile_useismobile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "src_hooks_use_toast_ts",
+      "_tgt": "use_toast_genid",
+      "source": "src_hooks_use_toast_ts",
+      "target": "use_toast_genid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_src": "src_hooks_use_toast_ts",
+      "_tgt": "use_toast_addtoremovequeue",
+      "source": "src_hooks_use_toast_ts",
+      "target": "use_toast_addtoremovequeue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "src_hooks_use_toast_ts",
+      "_tgt": "use_toast_reducer",
+      "source": "src_hooks_use_toast_ts",
+      "target": "use_toast_reducer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_src": "src_hooks_use_toast_ts",
+      "_tgt": "use_toast_dispatch",
+      "source": "src_hooks_use_toast_ts",
+      "target": "use_toast_dispatch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L137",
+      "weight": 1.0,
+      "_src": "src_hooks_use_toast_ts",
+      "_tgt": "use_toast_toast",
+      "source": "src_hooks_use_toast_ts",
+      "target": "use_toast_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_src": "src_hooks_use_toast_ts",
+      "_tgt": "use_toast_usetoast",
+      "source": "src_hooks_use_toast_ts",
+      "target": "use_toast_usetoast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_src": "use_toast_toast",
+      "_tgt": "use_toast_genid",
+      "source": "use_toast_genid",
+      "target": "use_toast_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "use_toast_reducer",
+      "_tgt": "use_toast_addtoremovequeue",
+      "source": "use_toast_addtoremovequeue",
+      "target": "use_toast_reducer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_src": "use_toast_dispatch",
+      "_tgt": "use_toast_reducer",
+      "source": "use_toast_reducer",
+      "target": "use_toast_dispatch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/use-toast.ts",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_src": "use_toast_toast",
+      "_tgt": "use_toast_dispatch",
+      "source": "use_toast_dispatch",
+      "target": "use_toast_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_lib_utils_ts",
+      "_tgt": "utils_cn",
+      "source": "src_lib_utils_ts",
+      "target": "utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/NotFound.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_pages_notfound_tsx",
+      "_tgt": "notfound_notfound",
+      "source": "src_pages_notfound_tsx",
+      "target": "notfound_notfound",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
